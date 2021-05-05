@@ -1,0 +1,15 @@
+---
+- name: "Alpinehelloworld installation"
+  become: yes
+  hosts: prod
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  tasks:
+    - name: Create default containers
+      docker_container:
+        name: "alpinehelloworld"
+        image: "guyduche/alpinehelloworld"
+        env:
+          PORT: "5000"
+        ports: 80:5000
+...
